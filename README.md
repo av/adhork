@@ -4,8 +4,7 @@
 
 ## Features
 
-The assignment was completed with an attempt to build a starting
-ground for a potential new service. It also includes a sample consumer application, "News", which consumes the published ads and presents them back to the user. Solution includes following features:
+Taking into account limited time, the assignment was completed with a "Spike" or "MVP" style. Apart from that, I tried to implement a semi-realistic DX required for a larger codebase. It also includes a sample consumer application, "News", which consumes the published ads and presents them back to the user. Solution includes following features:
 
 - Dockerized workspace, with `docker-compose`
 - Using Next.js + TypeScript + Serverless APIs
@@ -22,8 +21,8 @@ Targeted for a quick completion, solution is naive and doesn't include some feat
 
 On the other hand, despite the limited time, I've managed to add sample (very basic) tests:
 
-- [Ads lib module test](https://github.com/av/adhork/blobl/master/ads/lib/ads.test.ts)
-- [Ads click E2E test](https://github.com/av/adhork/blobl/master/e2e/tests/01-clicking-an-ad.ts)
+- [Ads lib module test](https://github.com/av/adhork/blob/master/ads/lib/ads.test.ts)
+- [Ads click E2E test](https://github.com/av/adhork/blob/master/e2e/tests/01-clicking-an-ad.ts)
 
 The latter is pretty interesting, it visits an "Ad Administration" page, remembers first ad clicks, then opens the "News" app, visits the ad URL and then verifies that clicks stat was incremented back on "Ad Administration".
 
