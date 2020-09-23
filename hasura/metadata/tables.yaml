@@ -1,0 +1,12 @@
+- table:
+    schema: public
+    name: ad_clicks
+- table:
+    schema: public
+    name: ad_loads
+- table:
+    schema: public
+    name: ad_stats_schema
+- table:
+    schema: public
+    name: ads

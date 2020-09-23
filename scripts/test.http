@@ -1,0 +1,10 @@
+GET http://localhost:3000/api/ads
+
+###
+
+GET http://localhost:3000/api/ads/56e9fbe8-b795-4257-8dfd-efe715fd9be7
+Accept: text/html
+
+###
+
+GET https://hacker-news.firebaseio.com/v0/newstories.json

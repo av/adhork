@@ -1,0 +1,11 @@
+{
+  "name": "adhork",
+  "version": "0.0.1",
+  "repository": "git@github.com:av/adhork.git",
+  "author": "<mail@av.codes>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "docker-compose up",
+    "hasura:console": "cd ./hasura && hasura --skip-update-check console"
+  }
+}
