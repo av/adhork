@@ -1,0 +1,24 @@
+@startuml
+
+skinparam Monochrome true
+
+== Loading News Feed ==
+User -> NewsFeed: GET /
+
+NewsFeed -> HackerNewsAPI: GET /newstories.json
+HackerNewsAPI -> NewsFeed: News
+
+NewsFeed -> AdsService: GET /api/ads
+AdsService -> NewsFeed: Ads
+
+NewsFeed -> User: News & Ads Content
+
+...
+== Viewing an Ad ==
+User -> NewsFeed: Click an Ad
+NewsFeed -> AdsService: GET /api/ads/:id
+AdsService -> AdsService: Detect resolution request
+AdsService -> NewsFeed: 302 Redirect
+NewsFeed -> Content: Visit advertiser's URL 
+
+@enduml

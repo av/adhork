@@ -1,0 +1,67 @@
+@startuml
+
+skinparam Monochrome true
+
+actor User
+actor Admin
+
+cloud HackerNews {
+  node HackerNewsAPI
+}
+
+frame News as "News App" {
+  node NewsFeed [
+  == News Feed
+  ---
+  Displays most recent
+  items from Hacker News
+  and embedded ads.
+  ]
+}
+
+frame AdsService as "Ads Service" {
+  card Hasura [
+  == Hasura
+  ---
+  GraphQL API for
+  managing and accessing
+  ads content.
+  ]
+
+  database PostgreSQL [
+  = Ads
+  ---
+  = Clicks
+  ---
+  = Loads
+  ]
+
+  node AdsAdmin [
+  == Ads Admin
+  ---
+  Displays stats
+  for current campaign
+  ]
+
+  node AdsAPI [
+  = Ads API
+  ---
+  GET /api/ads
+  <size:10>Serves a selection of ads
+  ---
+  GET /api/ads/:id
+  <size:10>Redirects user to the ad content
+  ]
+}
+
+User <-down-> NewsFeed: Visit News App
+NewsFeed <-> AdsAPI: Fetch ads
+NewsFeed <-> AdsAPI: Resolve ads
+AdsAPI <-> Hasura
+Hasura <-> PostgreSQL
+
+NewsFeed <-down-> HackerNewsAPI: Fetch news
+AdsAdmin <-up-> Hasura: Fetch campaign stats
+Admin <-up-> AdsAdmin: View stats
+
+@enduml
