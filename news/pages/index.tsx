@@ -33,7 +33,7 @@ export default function Home({ news, ads }: HomeProps) {
         <div className="ads-container">
           <small>Ads:</small>
           {ads.map((ad) => (
-            <small>
+            <small data-e2e-ad-item>
               <a href={ad.url} target="_blank">
                 {ad.title}
               </a>

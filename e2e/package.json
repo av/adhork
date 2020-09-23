@@ -1,0 +1,12 @@
+{
+  "name": "adhork-e2e",
+  "version": "0.0.1",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "testcafe": "^1.9.3"
+  },
+  "scripts": {
+    "test": "testcafe --skip-js-errors chrome ./tests/*.ts"
+  }
+}

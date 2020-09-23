@@ -6,6 +6,15 @@
   "license": "MIT",
   "scripts": {
     "dev": "docker-compose up",
-    "hasura:console": "cd ./hasura && hasura --skip-update-check console"
+    "test": "yarn test:e2e && yarn test:unit",
+    "test:e2e": "cd ./e2e && yarn test",
+    "test:unit": "cd ./ads && yarn test:unit",
+    "hasura:console": "cd ./hasura && hasura --skip-update-check console",
+    "hasura:apply": "yarn hasura:metadata && yarn hasura:migrate",
+    "hasura:metadata": "cd ./hasura && hasura --skip-update-check metadata apply",
+    "hasura:migrate": "cd ./hasura && hasura --skip-update-check migrate apply"
+  },
+  "devDependencies": {
+    "testcafe": "^1.9.3"
   }
 }

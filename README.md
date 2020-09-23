@@ -20,6 +20,13 @@ Targeted for a quick completion, solution is naive and doesn't include some feat
 - Data validation at API layer
 - Incremental updates for built Frontends
 
+On the other hand, despite the limited time, I've managed to add sample (very basic) tests:
+
+- [Ads lib module test](https://github.com/av/adhork/blobl/master/ads/lib/ads.test.ts)
+- [Ads click E2E test](https://github.com/av/adhork/blobl/master/e2e/tests/01-clicking-an-ad.ts)
+
+The latter is pretty interesting, it visits an "Ad Administration" page, remembers first ad clicks, then opens the "News" app, visits the ad URL and then verifies that clicks stat was incremented back on "Ad Administration".
+
 ## Architecture
 
 ![Image of service architecture](/out/architecture/architecture.png)
@@ -38,3 +45,17 @@ Solution implements 2 main happy paths:
 
 - A third-party application consuming ads from Ads Service
 - Ads service exposing the contents of Ads to the end user
+
+## Running locally
+
+In order to run this assignment on your own machine:
+
+- Ensure that `docker` and `docker-compose` are installed
+- Ensure that `node` and `yarn` are installed
+- `git clone git@github.com:av/adhork.git` in the desired folder
+- Run `yarn` in `ads`, `e2e`, `news` components
+- Launch services with `yarn dev` from project root
+- Apply hasura migrations and metadata with `yarn hasura:apply` from project root. This will apply stored SQL migrations and tracked tables/functions to a running Hasura instance.
+- Add sample ads data with Hasura Console. To launch console run `yarn hasura:console` while containers are up and running, you'll also be able to explore the data model there.
+
+After these steps performed, visit `http://localhost:3000` for "Ads Admin" app and `http://localhost:3001` for the "News App". New ads could be added via Hasura,
